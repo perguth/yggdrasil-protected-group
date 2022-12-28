@@ -1,6 +1,6 @@
 # Yggdrasil Protected Group
 
-> Sync Yggdrasil `Peers`, `AllowedPublicKeys` and whitelist IPs via UFW
+> Sync [Yggdrasil](https://yggdrasil-network.github.io/) `Peers`, `AllowedPublicKeys` and whitelist IPs via UFW
 
 - Adds a new config file under `/etc/yggdrasil-protected-group.conf`
 - Watches the new config file for changes
