@@ -34,9 +34,11 @@ class YggdrasilProtectedGroup {
       },
       swarm: {
         topic: null,
+        sharedSecret: null,
         sharedKeyPair: null,
         remotePublicKeys: [],
         peers: {}
+        keyPair
       }
     }
   }
@@ -101,7 +103,7 @@ class YggdrasilProtectedGroup {
 
     if (
       !this.conf.swarm.sharedSecret ||
-      this.conf.swarm.sharedSecretHash !== sha256(this.conf.ypg.sharedSecret)
+      this.conf.swarm.sharedSecretHash !== this.conf.ypg.sharedSecret
     ) {
       const accessKeyPair = (DHT.keyPair(
         Buffer.from(sha256(this.conf.ypg.SharedSecret), 'hex')
@@ -115,6 +117,7 @@ class YggdrasilProtectedGroup {
         Buffer.from(sha256(this.conf.ypg.SharedSecret), 'hex')
       )
       this.conf.swarm.topic = topic.toString('hex')
+      this.conf.swarm.sharedSecret = this.conf.ypg.sharedSecret
       this.saveConf('swarm')
       const date = new Date(0)
       fs.utimesSync(this.path.ypg, date, date)
