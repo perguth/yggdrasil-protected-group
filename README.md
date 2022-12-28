@@ -1,6 +1,6 @@
 # yggdrasil-protected-group
 
-> Sync Yggdrasil `Peers`, `AllowedPublicKeys` and whitelist Ygg-IPs via UFW
+> Sync Yggdrasil `Peers`, `AllowedPublicKeys` and whitelist IPs via UFW
 
 ```
 # Install NodeJS
