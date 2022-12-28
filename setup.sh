@@ -4,6 +4,7 @@ NAME=yggdrasil-protected-group
 
 # Clone repository
 cd /opt
+sudo rm -rf $NAME
 sudo git clone https://github.com/perguth/$NAME.git
 cd $NAME
 sudo npm i
