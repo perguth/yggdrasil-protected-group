@@ -256,10 +256,6 @@ class YggdrasilProtectedGroup {
     socket.write(JSON.stringify({ mtime: this.mtime }))
   }
 
-  unWatch () {
-    this.abortController.abort()
-  }
-
   watch () {
     this.abortController = new AbortController()
     fs.watch(this.path.ypg, { signal: this.abortController.signal }, t => {
@@ -274,6 +270,10 @@ class YggdrasilProtectedGroup {
         this.updateYgg()
       }
     })
+  }
+
+  unWatch () {
+    this.abortController.abort()
   }
 
   sendConfig (socket) {
