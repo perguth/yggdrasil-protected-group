@@ -1,4 +1,4 @@
-# yggdrasil-protected-group
+# Yggdrasil Protected Group
 
 > Sync Yggdrasil `Peers`, `AllowedPublicKeys` and whitelist IPs via UFW
 
