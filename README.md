@@ -25,7 +25,7 @@ sudo ufw enable
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
 
 # Use the same `SharedSecret` for all group members in
-nano /etc/yggdrasil-protected-group.conf
+sudo nano /etc/yggdrasil-protected-group.conf
 # and then restart the service
 sudo service yggdrasil-protected-group restart
 ```
