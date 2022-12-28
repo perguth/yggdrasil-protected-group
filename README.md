@@ -29,7 +29,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 
 ## Configure
 
-```
+```bash
 # Use the same `SharedSecret` for all group members in
 sudo nano /etc/yggdrasil-protected-group.conf
 # and then restart the service:
