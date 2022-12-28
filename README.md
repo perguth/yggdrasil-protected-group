@@ -23,7 +23,7 @@ sudo apt install -y ufw
 sudo ufw allow ssh
 sudo ufw enable
 
-# Setup systemd service
+# Setup the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
 ```
 
