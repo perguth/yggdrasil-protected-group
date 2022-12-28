@@ -24,8 +24,8 @@ sudo ufw enable
 # Setup systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
 
-# Use the same `SharedSecret` for group members in
-# /etc/yggdrasil-protected-group.conf
+# Use the same `SharedSecret` for all group members in
+nano /etc/yggdrasil-protected-group.conf
 # and then restart the service
-# sudo service yggdrasil-protected-group restart
+sudo service yggdrasil-protected-group restart
 ```
