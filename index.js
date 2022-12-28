@@ -141,8 +141,17 @@ class YggdrasilProtectedGroup {
       const peerPublicKey = peerInfo.publicKey.toString('hex')
 
       this.sockets.add(socket)
-      socket.on('close', _ => this.sockets.delete(socket))
-      socket.on('error', _ => this.sockets.delete(socket))
+      socket.on('close', handleClose('close'))
+      socket.on('error', handleClose('error'))
+      function handleClose (type) {
+        return function () {
+          console.log(
+            `Connection to peer closed (${type}):`,
+            this.conf.swarm.peers[swarmKey] && this.keyToAddress(peerPublicKey)
+          )
+          this.sockets.delete(socket)
+        }
+      }
 
       socket.on('data', data => {
         const isMember = this.conf.swarm.remotePublicKeys.includes(peerPublicKey)
