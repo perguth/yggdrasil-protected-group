@@ -9,7 +9,7 @@
 - Whitelists all group members for access to local ports
 - `Peers`, `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden on changes
 
-```
+```bash
 # Install NodeJS
 sudo apt install -y nodejs
 
