@@ -13,4 +13,4 @@ sudo npm i
 sudo cp $NAME.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable $NAME
-sudo systemctl start $NAME
+sudo systemctl restart $NAME
