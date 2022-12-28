@@ -4,7 +4,7 @@
 
 - Adds a new config file under `/etc/yggdrasil-protected-group.conf`
 - Watches the new config file for changes
-- Automatically syncs changs with the group
+- Automatically syncs changes with the group
 - Automatically updates and restarts Yggdrasil
 - Whitelists all group members for access to local ports
 - `Peers`, `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden on changes
