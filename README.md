@@ -7,7 +7,7 @@
 - Automatically updates and restarts Yggdrasil
 - Automatically syncs changs with the group
 - Whitelists all group members for access to local ports
-- `Peers`, `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden.
+- `Peers`, `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden on changes
 
 ```
 # Install NodeJS
