@@ -1,0 +1,30 @@
+{
+  "name": "yggdrasil-protected-group",
+  "version": "1.0.0",
+  "description": "Sync Yggdrasil Peers, AllowedPublicKeys and whitelist IPs via UFW",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perguth/yggdrasil-protected-group.git"
+  },
+  "author": "Per Guth <mail@perguth.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/perguth/yggdrasil-protected-group/issues"
+  },
+  "homepage": "https://github.com/perguth/yggdrasil-protected-group#readme",
+  "dependencies": {
+    "@hyperswarm/dht": "^5.0.25",
+    "autobase": "^1.0.0-alpha.8",
+    "b4a": "^1.6.1",
+    "corestore": "^6.0.2",
+    "hjson": "^3.2.2",
+    "hyperbee": "^2.2.0",
+    "hyperswarm": "^3.0.4",
+    "sodium-universal": "^3.1.0"
+  }
+}

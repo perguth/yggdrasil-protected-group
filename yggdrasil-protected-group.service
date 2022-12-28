@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync Yggdrasil Peers, AllowedPublicKeys and whitelist IPs via UFW
+Documentation=https://github.com/perguth/yggdrasil-protected-group
+
+[Service]
+Type=simple
+ExecStart=node /opt/yggdrasil-protected-group/main.js
+
+[Install]
+WantedBy=multi-user.target
