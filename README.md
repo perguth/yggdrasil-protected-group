@@ -12,6 +12,6 @@ sudo ufw allow ssh
 sudo ufw deny in on ygg0
 sudo ufw enable
 
-# Setup service
+# Setup systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
 ```
