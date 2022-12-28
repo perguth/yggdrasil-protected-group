@@ -6,6 +6,9 @@
 # Install NodeJS
 sudo apt install -y nodejs
 
+# Fix Yggdrasil interface name
+sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
+
 # Install and setup UFW
 sudo apt install -y ufw
 sudo ufw allow ssh
