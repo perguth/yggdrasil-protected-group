@@ -4,7 +4,7 @@ Documentation=https://github.com/perguth/yggdrasil-protected-group
 
 [Service]
 Type=simple
-ExecStart=node /opt/yggdrasil-protected-group/main.js
+ExecStart=node /opt/yggdrasil-protected-group/index.js
 
 [Install]
 WantedBy=multi-user.target
