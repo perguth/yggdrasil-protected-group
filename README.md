@@ -26,4 +26,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 
 # Use the same `SharedSecret` for group members in
 # /etc/yggdrasil-protected-group.conf
+# and then restart the service
+# sudo service yggdrasil-protected-group restart
 ```
