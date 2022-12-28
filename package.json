@@ -2,7 +2,7 @@
   "name": "yggdrasil-protected-group",
   "version": "1.0.0",
   "description": "Sync Yggdrasil Peers, AllowedPublicKeys and whitelist IPs via UFW",
-  "main": "main.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
