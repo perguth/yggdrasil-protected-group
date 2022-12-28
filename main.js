@@ -263,6 +263,7 @@ class YggdrasilProtectedGroup {
       if (mtime <= this.mtime) {
         return
       }
+      console.log(`Deteced file changs in \`${this.path.ypg}\``)
       this.conf.ypg = HJSON.rt.parse(fs.readFileSync(this.path.ypg, 'utf8'))
       this.mtime = mtime
       for (const socket of this.sockets) {
@@ -288,7 +289,7 @@ class YggdrasilProtectedGroup {
   updateYpg () {
     fs.writeFileSync(this.path.ypg, HJSON.rt.stringify(this.conf.ypg))
     fs.utimesSync(this.path.ypg, this.mtime, this.mtime)
-    console.log('Updated `/etc/yggdrasil-protected-group.conf`')
+    console.log(`Updated \`${this.path.ypg}\``)
   }
 
   updateYgg () {
@@ -304,7 +305,7 @@ class YggdrasilProtectedGroup {
       ]
     }))
     child.execSync('service yggdrasil restart')
-    console.log('Updated `/etc/yggdrasil.conf` and restarted Yggdrasil')
+    console.log(`Updated \`${this.path.ygg}\` and restarted Yggdrasil`)
   }
 
   keyToAddress (swarmKey) {
