@@ -37,8 +37,8 @@ class YggdrasilProtectedGroup {
         sharedSecret: null,
         sharedKeyPair: null,
         remotePublicKeys: [],
-        peers: {}
-        keyPair
+        peers: {},
+        keyPair: {}
       }
     }
   }
