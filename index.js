@@ -298,7 +298,7 @@ class YggdrasilProtectedGroup {
       hjson: {
         Peers: this.conf.ypg.Peers.GroupShared,
         AllowedPublicKeys: this.conf.ypg.AllowedPublicKeys.GroupShared,
-        mtime: this.mtime
+        mtime: this.mtime.toString()
       }
     }))
     console.log('Sent newer configuration to peer:', this.keyToAddress(socket.remotePublicKey.toString('hex')))
