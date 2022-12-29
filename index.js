@@ -255,14 +255,15 @@ class YggdrasilProtectedGroup {
       }
 
       if (data.hjson) {
-        if (this.mtime >= new Date(data.hjson.mtime)) {
+        const mtime = new Date(data.hjson.mtime)
+        if (this.mtime >= mtime) {
           console.log('Discarding received config -- already up to date')
           return
         }
         console.log('Got newer configuration from peer:', this.keyToAddress(peerPublicKey))
         this.conf.ypg.Peers.GroupShared = data.hjson.Peers
         this.conf.ypg.AllowedPublicKeys.GroupShared = data.hjson.AllowedPublicKeys
-        this.mtime = new Date(data.hjson.mtime)
+        this.mtime = mtime
         this.updateYpg()
         this.updateYgg()
       }
@@ -306,6 +307,7 @@ class YggdrasilProtectedGroup {
   updateYpg () {
     this.unWatch()
     fs.writeFileSync(this.path.ypg, HJSON.rt.stringify(this.conf.ypg))
+    console.log('this.mtime', this.mtime)
     fs.utimesSync(this.path.ypg, this.mtime, this.mtime)
     this.watch()
     console.log(`Updated \`${this.path.ypg}\``)
