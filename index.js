@@ -147,7 +147,7 @@ class YggdrasilProtectedGroup {
           return
         }
         console.log(
-          'Connection to peer closed:',
+          '(Previous) connection to peer closed:',
           this.conf.swarm.peers[peerPublicKey] && this.keyToAddress(peerPublicKey)
         )
         this.sockets.delete(socket)
