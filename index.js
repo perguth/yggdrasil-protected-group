@@ -66,9 +66,12 @@ class YggdrasilProtectedGroup {
       } catch (err) {
         if (err.message.includes(this.path.swarm)) {
           try {
-            fs.mkdirSync(/^(.*\/)/g.exec(this.path.swarm)[0])
+            const folderPath = /^(.*\/)/g.exec(this.path.swarm)[0]
+            fs.mkdirSync(folderPath)
+            child.execSync(`chmod g-r ${folderPath}`)
           } catch (_) {}
           this.saveConf('swarm')
+          child.execSync(`chmod g-r ${this.path.swarm}`)
           continue
         }
         if (err.message.includes(this.path.ypg)) {
@@ -78,6 +81,7 @@ class YggdrasilProtectedGroup {
           this.saveConf('ypg')
           const date = new Date(0)
           fs.utimesSync(this.path.ypg, date, date)
+          child.execSync(`chmod g-r ${this.path.ypg}`)
           continue
         }
         console.error('Config file missing', err)
