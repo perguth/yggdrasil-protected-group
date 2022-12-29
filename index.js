@@ -275,7 +275,7 @@ class YggdrasilProtectedGroup {
       }
     })
 
-    socket.write(JSON.stringify({ mtime: this.mtime }))
+    socket.write(JSON.stringify({ mtime: this.mtime.toString() }))
   }
 
   watch () {
