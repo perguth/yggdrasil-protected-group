@@ -31,9 +31,23 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 
 ```bash
 # Use the same `SharedSecret` for all group members in
-sudo nano /etc/yggdrasil-protected-group.conf
+# /etc/yggdrasil-protected-group.conf
 # and then restart the service:
 sudo service yggdrasil-protected-group restart
 
-# The rest of the properties are automatically synced.
+# The rest of the properties are automatically synced:
+# /etc/yggdrasil-protected-group.conf
+# {
+#   SharedSecret: ...
+#   Peers:
+#   {
+#     GroupShared: []
+#     LocalOnly: []
+#   }
+#   AllowedPublicKeys:
+#   {
+#     GroupShared: []
+#     LocalOnly: []
+#   }
+# }
 ```
