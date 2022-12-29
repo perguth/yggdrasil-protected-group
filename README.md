@@ -52,3 +52,4 @@ $ /etc/yggdrasil-protected-group.conf
 - After changing the `SharedSecret` the service must be restarted:  
   `sudo service yggdrasil-protected-group restart`
 -  All other properties are automatically synced
+- Comments in `GroupShared` and `LocalOnly` are synced as well
