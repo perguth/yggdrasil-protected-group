@@ -29,7 +29,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 
 ## Usage
 
-Directly edit:
+Directly edit the [Hjson](https://hjson.github.io/) file:
 
 ```
 $ /etc/yggdrasil-protected-group.conf
