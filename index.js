@@ -237,7 +237,7 @@ class YggdrasilProtectedGroup {
 
     socket.on('data', data => {
       try {
-        data = JSON.parse(data.toString())
+        data = HJSON.rt.parse(data.toString())
       } catch (err) {
         console.error('Received broken JSON from peer:', this.keyToAddress(peerPublicKey), err)
         socket.destroy()
@@ -293,7 +293,7 @@ class YggdrasilProtectedGroup {
   }
 
   sendConfig (socket) {
-    socket.write(JSON.stringify({
+    socket.write(HJSON.rt.stringify({
       hjson: {
         Peers: this.conf.ypg.Peers.GroupShared,
         AllowedPublicKeys: this.conf.ypg.AllowedPublicKeys.GroupShared,
