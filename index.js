@@ -307,7 +307,6 @@ class YggdrasilProtectedGroup {
   updateYpg () {
     this.unWatch()
     fs.writeFileSync(this.path.ypg, HJSON.rt.stringify(this.conf.ypg))
-    console.log('this.mtime', this.mtime)
     fs.utimesSync(this.path.ypg, this.mtime, this.mtime)
     this.watch()
     console.log(`Updated \`${this.path.ypg}\``)
