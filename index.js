@@ -251,13 +251,11 @@ class YggdrasilProtectedGroup {
 
       if (data.hjson) {
         console.log('Got newer configuration from peer:', this.keyToAddress(peerPublicKey))
-        this.unWatch()
         this.conf.ypg.Peers.GroupShared = data.hjson.Peers
         this.conf.ypg.AllowedPublicKeys.GroupShared = data.hjson.AllowedPublicKeys
         this.mtime = new Date(data.hjson.mtime)
         this.updateYpg()
         this.updateYgg()
-        this.watch()
         return
       }
     })
@@ -267,7 +265,7 @@ class YggdrasilProtectedGroup {
 
   watch () {
     this.abortController = new AbortController()
-    fs.watch(this.path.ypg, { signal: this.abortController.signal }, t => {
+    fs.watch(this.path.ypg, { signal: this.abortController.signal }, _ => {
       const mtime = fs.statSync(this.path.ypg).mtime
       if (mtime <= this.mtime) {
         return
@@ -296,8 +294,10 @@ class YggdrasilProtectedGroup {
   }
 
   updateYpg () {
+    this.unWatch()
     fs.writeFileSync(this.path.ypg, HJSON.rt.stringify(this.conf.ypg))
     fs.utimesSync(this.path.ypg, this.mtime, this.mtime)
+    this.watch()
     console.log(`Updated \`${this.path.ypg}\``)
   }
 
