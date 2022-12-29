@@ -86,7 +86,7 @@ class YggdrasilProtectedGroup {
     }
 
     if (!this.conf.ypg.SharedSecret) {
-      let sharedSecret = b4a.allocUnsafe(32)
+      const sharedSecret = b4a.allocUnsafe(32)
       sodium.crypto_generichash(sharedSecret, Buffer.alloc(32).fill(this.yggSelf.key))
       this.conf.ypg.SharedSecret = sharedSecret.toString('hex')
       this.saveConf('ypg')
@@ -113,7 +113,7 @@ class YggdrasilProtectedGroup {
         publicKey: accessKeyPair.publicKey.toString('hex'),
         secretKey: accessKeyPair.secretKey.toString('hex')
       }
-      let topic = b4a.allocUnsafe(32)
+      const topic = b4a.allocUnsafe(32)
       sodium.crypto_generichash(topic,
         Buffer.from(sha256(this.conf.ypg.SharedSecret), 'hex')
       )
@@ -147,7 +147,7 @@ class YggdrasilProtectedGroup {
           return
         }
         console.log(
-          `Connection to peer closed:`,
+          'Connection to peer closed:',
           this.conf.swarm.peers[peerPublicKey] && this.keyToAddress(peerPublicKey)
         )
         this.sockets.delete(socket)
@@ -186,11 +186,13 @@ class YggdrasilProtectedGroup {
             this.saveConf('swarm')
           }
 
-          socket.write(JSON.stringify({ peer: {
-            swarmPublicKey: this.conf.swarm.keyPair.publicKey,
-            yggPublicKey: this.yggSelf.key,
-            yggAddress: this.yggSelf.address
-          }}))
+          socket.write(JSON.stringify({
+            peer: {
+              swarmPublicKey: this.conf.swarm.keyPair.publicKey,
+              yggPublicKey: this.yggSelf.key,
+              yggAddress: this.yggSelf.address
+            }
+          }))
 
           console.log('Sent info to new peer:', peerPublicKey)
           return
@@ -211,7 +213,7 @@ class YggdrasilProtectedGroup {
       const isMember = this.conf.swarm.remotePublicKeys.includes(peerPublicKey)
       const isKnown = !!this.conf.swarm.peers[peerPublicKey]
       if (!isMember || !isKnown) {
-        let signedMessage = b4a.allocUnsafe(32 + sodium.crypto_sign_BYTES)
+        const signedMessage = b4a.allocUnsafe(32 + sodium.crypto_sign_BYTES)
         sodium.crypto_sign(
           signedMessage,
           Buffer.alloc(32).fill(sodium.randombytes_random()),
@@ -263,7 +265,6 @@ class YggdrasilProtectedGroup {
         this.mtime = new Date(data.hjson.mtime)
         this.updateYpg()
         this.updateYgg()
-        return
       }
     })
 
@@ -292,11 +293,13 @@ class YggdrasilProtectedGroup {
   }
 
   sendConfig (socket) {
-    socket.write(JSON.stringify({ hjson: {
-      Peers: this.conf.ypg.Peers.GroupShared,
-      AllowedPublicKeys: this.conf.ypg.AllowedPublicKeys.GroupShared,
-      mtime: this.mtime
-    }}))
+    socket.write(JSON.stringify({
+      hjson: {
+        Peers: this.conf.ypg.Peers.GroupShared,
+        AllowedPublicKeys: this.conf.ypg.AllowedPublicKeys.GroupShared,
+        mtime: this.mtime
+      }
+    }))
     console.log('Sent newer configuration to peer:', this.keyToAddress(socket.remotePublicKey.toString('hex')))
   }
 
