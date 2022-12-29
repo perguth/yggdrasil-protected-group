@@ -242,7 +242,7 @@ class YggdrasilProtectedGroup {
 
       if (data.mtime) {
         console.log('Local:', this.mtime)
-        console.log('Remote', data.mtim)
+        console.log('Remote', data.mtime)
         console.log('Send?', !(this.mtime <= data.mtime))
         data.mtime = new Date(data.mtime)
         if (this.mtime <= data.mtime) {
