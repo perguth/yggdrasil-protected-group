@@ -253,7 +253,7 @@ class YggdrasilProtectedGroup {
 
       if (data.hjson) {
         if (this.mtime >= new Date(data.hjson.mtime)) {
-          console.log('Discarding received config')
+          console.log('Discarding received config -- already up to date')
           return
         }
         console.log('Got newer configuration from peer:', this.keyToAddress(peerPublicKey))
