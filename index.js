@@ -245,14 +245,9 @@ class YggdrasilProtectedGroup {
       }
 
       if (data.mtime) {
+        data.mtime = new Date(data.mtime)
         console.log('data.mtime', data.mtime)
         console.log('this.mtime', this.mtime)
-        const d1 = new Date(HJSON.rt.parse(HJSON.rt.stringify(JSON.stringify(this.mtime))))
-        const d2 = new Date(HJSON.rt.parse(HJSON.rt.stringify(this.mtime.toString())))
-        console.log('this.mtime 1', d1)
-        console.log('this.mtime 2', d2)
-        console.log(d1 == d2)
-        data.mtime = new Date(data.mtime)
         if (this.mtime <= data.mtime) {
           console.log('Already in sync with:', this.keyToAddress(peerPublicKey))
           return
