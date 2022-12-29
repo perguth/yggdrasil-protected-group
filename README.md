@@ -25,7 +25,7 @@ sudo ufw allow ssh
 # Install the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
 
-# Set the `SharedSecret` in
+# Set/copy the `SharedSecret`
 sudo nano /etc/yggdrasil-protected-group.conf
 # and restart the service
 sudo service yggdrasil-protected-group restart
