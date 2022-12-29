@@ -12,7 +12,7 @@ class YggdrasilProtectedGroup {
     console.log('Starting `yggdrasil-protected-group`')
 
     this.sockets = new Set()
-    this.mtimeMs = null
+    this.mtime = null
     this.yggSelf = null
     this.abortController = null
     this.path = {
@@ -128,7 +128,7 @@ class YggdrasilProtectedGroup {
   async start () {
     this.prepare()
 
-    this.mtimeMs = fs.statSync(this.path.ypg).mtimeMs.toString()
+    this.mtime = fs.statSync(this.path.ypg).mtime
 
     const swarm = new Hyperswarm({
       keyPair: {
@@ -244,8 +244,9 @@ class YggdrasilProtectedGroup {
         return
       }
 
-      if (data.mtimeMs) {
-        if (this.mtimeMs <= data.mtimeMs) {
+      if (data.mtime) {
+        data.mtime = new Date(data.mtime)
+        if (this.mtime <= data.mtime) {
           console.log('No updates available for:', this.keyToAddress(peerPublicKey))
           return
         }
@@ -254,33 +255,34 @@ class YggdrasilProtectedGroup {
       }
 
       if (data.hjson) {
-        if (this.mtimeMs >= data.hjson.mtimeMs) {
+        data.hjson.mtime = new Date(data.hjson.mtime)
+        if (this.mtime >= data.hjson.mtime) {
           console.log('Discarding config from peer (already up to date):', this.keyToAddress(peerPublicKey))
           return
         }
         console.log('Got newer configuration from peer:', this.keyToAddress(peerPublicKey))
         this.conf.ypg.Peers.GroupShared = data.hjson.Peers
         this.conf.ypg.AllowedPublicKeys.GroupShared = data.hjson.AllowedPublicKeys
-        this.mtimeMs = data.hjson.mtimeMs
+        this.mtime = data.hjson.mtime
         this.updateYpg()
         this.updateYgg()
       }
     })
 
-    socket.write(HJSON.stringify({ mtimeMs: this.mtimeMs }))
+    socket.write(JSON.stringify({ mtime: this.mtime }))
   }
 
   watch () {
     let debounce
     this.abortController = new AbortController()
     fs.watch(this.path.ypg, { signal: this.abortController.signal }, _ => {
-      const mtimeMs = fs.statSync(this.path.ypg).mtimeMs.toString()
-      if (debounce === mtimeMs) {
+      const mtime = fs.statSync(this.path.ypg).mtime
+      if (+debounce === +mtime) {
         return
       }
       console.log(`Detected file changes in \`${this.path.ypg}\``)
-      debounce = mtimeMs
-      this.mtimeMs = mtimeMs
+      debounce = mtime
+      this.mtime = mtime
       this.conf.ypg = HJSON.rt.parse(fs.readFileSync(this.path.ypg, 'utf8'))
       for (const socket of this.sockets) {
         this.sendConfig(socket)
@@ -298,16 +300,16 @@ class YggdrasilProtectedGroup {
       hjson: {
         Peers: this.conf.ypg.Peers.GroupShared,
         AllowedPublicKeys: this.conf.ypg.AllowedPublicKeys.GroupShared,
-        mtimeMs: this.mtimeMs
+        mtime: this.mtime.toJSON()
       }
     }))
-    console.log('Sent newer configuration to peer:', this.keyToAddress(socket.remotePublicKey.toString('hex')))
+    console.log('Sent config to peer:', this.keyToAddress(socket.remotePublicKey.toString('hex')))
   }
 
   updateYpg () {
     this.unWatch()
     fs.writeFileSync(this.path.ypg, HJSON.rt.stringify(this.conf.ypg))
-    fs.utimesSync(this.path.ypg, this.mtimeMs, this.mtimeMs)
+    fs.utimesSync(this.path.ypg, this.mtime, this.mtime)
     this.watch()
     console.log(`Updated \`${this.path.ypg}\``)
   }
