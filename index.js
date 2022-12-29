@@ -68,7 +68,6 @@ class YggdrasilProtectedGroup {
           try {
             const folderPath = /^(.*\/)/g.exec(this.path.swarm)[0]
             fs.mkdirSync(folderPath)
-            child.execSync(`chmod o-r ${folderPath}`)
           } catch (_) {}
           this.saveConf('swarm')
           child.execSync(`chmod o-r ${this.path.swarm}`)
