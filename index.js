@@ -103,8 +103,9 @@ class YggdrasilProtectedGroup {
 
     if (
       !this.conf.swarm.sharedSecret ||
-      this.conf.swarm.sharedSecretHash !== this.conf.ypg.sharedSecret
+      this.conf.swarm.sharedSecret !== this.conf.ypg.SharedSecret
     ) {
+      console.log('`SharedSecret` changed. Deprecating config.')
       const accessKeyPair = (DHT.keyPair(
         Buffer.from(sha256(this.conf.ypg.SharedSecret), 'hex')
       ))
@@ -117,7 +118,7 @@ class YggdrasilProtectedGroup {
         Buffer.from(sha256(this.conf.ypg.SharedSecret), 'hex')
       )
       this.conf.swarm.topic = topic.toString('hex')
-      this.conf.swarm.sharedSecret = this.conf.ypg.sharedSecret
+      this.conf.swarm.sharedSecret = this.conf.ypg.SharedSecret
       this.saveConf('swarm')
       const date = new Date(0)
       fs.utimesSync(this.path.ypg, date, date)
@@ -141,17 +142,17 @@ class YggdrasilProtectedGroup {
       const peerPublicKey = peerInfo.publicKey.toString('hex')
 
       this.sockets.add(socket)
-      socket.on('close', handleClose('close'))
-      socket.on('error', handleClose('error'))
-      function handleClose (type) {
-        return function () {
+      const handleClose = (type) => {
+        return _ => {
           console.log(
             `Connection to peer closed (${type}):`,
-            this.conf.swarm.peers[swarmKey] && this.keyToAddress(peerPublicKey)
+            this.conf.swarm.peers[peerPublicKey] && this.keyToAddress(peerPublicKey)
           )
           this.sockets.delete(socket)
         }
       }
+      socket.on('close', handleClose('close'))
+      socket.on('error', handleClose('error'))
 
       socket.on('data', data => {
         const isMember = this.conf.swarm.remotePublicKeys.includes(peerPublicKey)
@@ -242,11 +243,8 @@ class YggdrasilProtectedGroup {
 
       if (data.mtime) {
         data.mtime = new Date(data.mtime)
-        console.log('Local:', this.mtime)
-        console.log('Remote', data.mtime)
-        console.log('Send?', !(this.mtime <= data.mtime))
-        console.log('Send?', !(new Date(this.mtime) <= data.mtime))
         if (this.mtime <= data.mtime) {
+          console.log('Already in sync with:', this.keyToAddress(peerPublicKey))
           return
         }
         this.sendConfig(socket)
@@ -275,7 +273,7 @@ class YggdrasilProtectedGroup {
     this.abortController = new AbortController()
     fs.watch(this.path.ypg, { signal: this.abortController.signal }, _ => {
       const mtime = fs.statSync(this.path.ypg).mtime
-      if (mtime <= this.mtime) {
+      if (this.mtime >= mtime) {
         return
       }
       console.log(`Deteced file changs in \`${this.path.ypg}\``)
