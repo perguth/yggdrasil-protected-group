@@ -21,10 +21,17 @@ sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
 # Install and setup UFW
 sudo apt install -y ufw
 sudo ufw allow ssh
-sudo ufw enable
 
 # Install the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
+
+# Set the `SharedSecret` in
+sudo nano /etc/yggdrasil-protected-group.conf
+# and restart the service
+sudo service yggdrasil-protected-group restart
+
+# Enable the firewall
+sudo ufw enable
 ```
 
 ## Usage
