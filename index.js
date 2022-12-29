@@ -281,8 +281,8 @@ class YggdrasilProtectedGroup {
       this.mtime = mtime
       for (const socket of this.sockets) {
         this.sendConfig(socket)
-        this.updateYgg()
       }
+      this.updateYgg()
     })
   }
 
