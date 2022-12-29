@@ -13,7 +13,7 @@
 
 ```bash
 # Install NodeJS
-sudo apt install -y nodejs
+# https://nodejs.org/en/download/package-manager/
 
 # Fix Yggdrasil interface name
 sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
