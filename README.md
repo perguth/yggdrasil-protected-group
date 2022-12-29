@@ -29,25 +29,26 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 
 ## Usage
 
-```bash
-# Use the same `SharedSecret` for all group members in
-# /etc/yggdrasil-protected-group.conf
-# and then restart the service:
-sudo service yggdrasil-protected-group restart
+Directly edit:
 
-# The rest of the properties are automatically synced:
-# /etc/yggdrasil-protected-group.conf
-# {
-#   SharedSecret: ...
-#   Peers:
-#   {
-#     GroupShared: []
-#     LocalOnly: []
-#   }
-#   AllowedPublicKeys:
-#   {
-#     GroupShared: []
-#     LocalOnly: []
-#   }
-# }
 ```
+$ /etc/yggdrasil-protected-group.conf
+{
+  SharedSecret: ...
+  Peers:
+  {
+    GroupShared: []
+    LocalOnly: []
+  }
+  AllowedPublicKeys:
+  {
+    GroupShared: []
+    LocalOnly: []
+  }
+}
+```
+
+- The same `SharedSecret` must be used for all group members
+- After changing the `SharedSecret` the service must be restarted:  
+  `sudo service yggdrasil-protected-group restart`
+-  All other properties are automatically synced
