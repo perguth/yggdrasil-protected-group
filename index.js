@@ -250,6 +250,10 @@ class YggdrasilProtectedGroup {
       }
 
       if (data.hjson) {
+        if (this.mtime >= new Date(data.hjson.mtime)) {
+          console.log('Discarding received config')
+          return
+        }
         console.log('Got newer configuration from peer:', this.keyToAddress(peerPublicKey))
         this.conf.ypg.Peers.GroupShared = data.hjson.Peers
         this.conf.ypg.AllowedPublicKeys.GroupShared = data.hjson.AllowedPublicKeys
