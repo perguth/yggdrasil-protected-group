@@ -259,6 +259,9 @@ class YggdrasilProtectedGroup {
 
       if (data.hjson) {
         const mtime = new Date(data.hjson.mtime)
+        console.log('mtime', mtime)
+        console.log('this.mtime', this.mtime)
+        console.log(this.mtime <= mtime)
         if (this.mtime >= mtime) {
           console.log('Discarding config from peer (already up to date):', this.keyToAddress(peerPublicKey))
           return
