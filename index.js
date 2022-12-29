@@ -1,11 +1,11 @@
+import b4a from 'b4a'
 import * as child from 'child_process'
+import crypto from 'crypto'
+import * as fs from 'fs'
+import HJSON from 'hjson'
 import Hyperswarm from 'hyperswarm'
 import DHT from '@hyperswarm/dht'
-import * as fs from 'fs'
 import sodium from 'sodium-universal'
-import b4a from 'b4a'
-import HJSON from 'hjson'
-import crypto from 'crypto'
 
 class YggdrasilProtectedGroup {
   constructor () {
