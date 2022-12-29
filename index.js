@@ -96,7 +96,7 @@ class YggdrasilProtectedGroup {
       this.saveConf('ypg')
     }
 
-    if (!this.conf.swarm.keyPair) {
+    if (!Object.keys(this.conf.swarm.keyPair).length) {
       const keyPair = DHT.keyPair()
       this.conf.swarm.keyPair = {
         publicKey: keyPair.publicKey.toString('hex'),
