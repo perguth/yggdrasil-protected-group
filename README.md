@@ -1,12 +1,12 @@
 # Yggdrasil Protected Group
 
-> Sync [Yggdrasil](https://yggdrasil-network.github.io/) `Peers`, `AllowedPublicKeys` and whitelist IPs via UFW
+> Sync [Yggdrasil](https://yggdrasil-network.github.io/) `Peers`, `AllowedPublicKeys` and whitelist IPs via [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html)
 
 - Adds a new config file under `/etc/yggdrasil-protected-group.conf`
 - Watches the new config file for changes
 - Automatically syncs changes with the group
 - Automatically updates and restarts Yggdrasil
-- Whitelists all group members for access to local ports
+- Whitelists group members for access to local ports via UFW
 - `Peers`, `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden on changes
 
 ## Install
