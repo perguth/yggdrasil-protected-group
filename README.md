@@ -2,6 +2,12 @@
 
 > Sync [Yggdrasil](https://yggdrasil-network.github.io/) `Peers`, `AllowedPublicKeys` and whitelist IPs via [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html)
 
+When you start building your own Yggdrasil Network cluster you face the dilemma of either not connecting to the wider network or having all of the nodes in your cluster beeing exposed to it. Using this script you can form a private group of nodes that can reach each others ports while keeping them unavailable to the wider network.
+
+Under the hood this script connects the group using [Hyperswarm](https://github.com/holepunchto/hyperswarm) and then uses a group shared secret to encrypt and share changes to the local configuration with the group.
+
+This service:
+
 - Adds a new config file under `/etc/yggdrasil-protected-group.conf`
 - **Watches** the new **config file** for changes
 - Automatically **syncs** changes **with** the **group**
@@ -54,6 +60,8 @@ $ /etc/yggdrasil-protected-group.conf
   }
 }
 ```
+
+Note that:
 
 - The same `SharedSecret` must be used for all group members
 - After changing the `SharedSecret` the service must be restarted:  
