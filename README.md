@@ -4,7 +4,7 @@
 
 When you start building your own Yggdrasil Network cluster you face the dilemma of either not connecting to the wider network or having all of the nodes in your cluster beeing exposed to it. Using this script you can form a private group of nodes that can reach each others ports while keeping them unavailable to the wider network.
 
-Under the hood this script connects the group using [Hyperswarm](https://github.com/holepunchto/hyperswarm) and a group shared secret to intitiate encrypted channels and share changes to the local configuration file of this script with the group.
+Under the hood this script uses [Hyperswarm](https://github.com/holepunchto/hyperswarm) and a group shared secret to intitiate encrypted channels and share changes to the local configuration file of this script with the group.
 
 This script:
 
