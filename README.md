@@ -24,9 +24,8 @@ This script:
 # Fix Yggdrasil interface name
 sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
 
-# Install and setup UFW
+# Install
 sudo apt install -y ufw
-sudo ufw allow ssh # not required for this script
 
 # Install the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
@@ -35,6 +34,16 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 sudo nano /etc/yggdrasil-protected-group.conf
 # and restart the service
 sudo service yggdrasil-protected-group restart
+
+# Now the group information gets synced and
+# the Yggdrasil IPs get whitelisted.
+
+# Keep in mind that the default policy of UFW
+# is to deny all incoming traffic.
+# So you may want to generally allow SSH
+# $ sudo ufw allow ssh
+# or generally allow the local network
+# $ sudo ufw allow from 192.168.0.0/16
 
 # Enable the firewall
 sudo ufw enable
