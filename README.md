@@ -26,7 +26,7 @@ sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
 
 # Install and setup UFW
 sudo apt install -y ufw
-sudo ufw allow ssh
+sudo ufw allow ssh # not required for this script
 
 # Install the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
