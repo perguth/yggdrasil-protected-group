@@ -13,7 +13,7 @@ This script:
 - Automatically **syncs** changes **with** the **group**
 - Automatically updates and **restarts Yggdrasil**
 - **Whitelists group members** for access to local ports via UFW
-- The properties `Peers`, `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden on changes
+- The properties `Peers` and `AllowedPublicKeys` in `/etc/yggdrasil.conf` will be managed by this service and automatically overriden on changes
 
 ## Install
 
