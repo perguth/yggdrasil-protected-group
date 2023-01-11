@@ -6,9 +6,13 @@ import HJSON from 'hjson'
 import Hyperswarm from 'hyperswarm'
 import DHT from '@hyperswarm/dht'
 import sodium from 'sodium-universal'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 class YggdrasilProtectedGroup {
   constructor () {
+    const __filename = fileURLToPath(import.meta.url)
+    const __dirname = dirname(__filename)
     console.log(
       'Starting `yggdrasil-protected-group` version ',
       child.execSync(`cd ${__dirname} && git rev-parse --short HEAD`).toString().replace('\n', '')
