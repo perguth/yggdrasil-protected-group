@@ -130,7 +130,7 @@ class YggdrasilProtectedGroup {
   
   checkVersion () {
     const version = child.execSync('yggdrasil -version').toString().match(/(\d).(\d).(\d)/)
-    if (version[1] === 0 && (version[2] < 4 || version[2] < 7)) {
+    if (+version[1] === 0 && (+version[2] < 4 || +version[2] < 7)) {
       return false
     }
     return true
