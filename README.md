@@ -26,6 +26,10 @@ sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
 
 # Install UFW
 sudo apt install -y ufw
+# Change from whilelist mode to blacklist mode
+sudo ufw default allow
+# Generally block incoming requests via Yggdrasil
+sudo ufw deny in on ygg0
 
 # Install the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
@@ -37,13 +41,6 @@ sudo service yggdrasil-protected-group restart
 
 # Now the group information gets synced and
 # the Yggdrasil IPs get whitelisted.
-
-# Keep in mind that the default policy of UFW
-# is to deny all incoming traffic.
-# So you probably want to generally allow SSH
-sudo ufw allow ssh
-# or even generally allow the local network
-# $ sudo ufw allow from 192.168.0.0/16
 
 # Enable the firewall
 sudo ufw enable
