@@ -9,7 +9,10 @@ import sodium from 'sodium-universal'
 
 class YggdrasilProtectedGroup {
   constructor () {
-    console.log('Starting `yggdrasil-protected-group`')
+    console.log(
+      'Starting `yggdrasil-protected-group` version ',
+      child.execSync('git rev-parse --short HEAD').toString().replace('\n', '')
+    )
 
     this.sockets = new Set()
     this.mtime = null
