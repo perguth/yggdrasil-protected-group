@@ -42,7 +42,7 @@ sudo service yggdrasil-protected-group restart
 # is to deny all incoming traffic.
 # So you probably want to generally allow SSH
 sudo ufw allow ssh
-# or generally allow the local network
+# or even generally allow the local network
 # $ sudo ufw allow from 192.168.0.0/16
 
 # Enable the firewall
