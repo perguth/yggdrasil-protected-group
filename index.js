@@ -11,7 +11,7 @@ class YggdrasilProtectedGroup {
   constructor () {
     console.log(
       'Starting `yggdrasil-protected-group` version ',
-      child.execSync('git rev-parse --short HEAD').toString().replace('\n', '')
+      child.execSync(`cd ${__dirname} && git rev-parse --short HEAD`).toString().replace('\n', '')
     )
 
     this.sockets = new Set()
