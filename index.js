@@ -14,7 +14,7 @@ class YggdrasilProtectedGroup {
     const __filename = fileURLToPath(import.meta.url)
     const __dirname = dirname(__filename)
     console.log(
-      'Starting `yggdrasil-protected-group` version ',
+      'Starting `yggdrasil-protected-group` version',
       child.execSync(`cd ${__dirname} && git rev-parse --short HEAD`).toString().replace('\n', '')
     )
 
