@@ -40,8 +40,8 @@ sudo service yggdrasil-protected-group restart
 
 # Keep in mind that the default policy of UFW
 # is to deny all incoming traffic.
-# So you may want to generally allow SSH
-# $ sudo ufw allow ssh
+# So you probably want to generally allow SSH
+sudo ufw allow ssh
 # or generally allow the local network
 # $ sudo ufw allow from 192.168.0.0/16
 
