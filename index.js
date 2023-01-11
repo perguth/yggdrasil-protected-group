@@ -127,8 +127,20 @@ class YggdrasilProtectedGroup {
       fs.utimesSync(this.path.ypg, date, date)
     }
   }
+  
+  checkVersion () {
+    const version = child.execSync('yggdrasil -version').toString().match(/(\d).(\d).(\d)/)
+    if (version[1] === 0 && (version[2] < 4 || version[2] < 7)) {
+      return false
+    }
+    return true
+  }
 
   async start () {
+    if (!this.checkVersion) {
+      console.error('Yggdrasil is too old (< 0.4.7)')
+      process.exit(1)
+    }
     this.prepare()
 
     this.mtime = fs.statSync(this.path.ypg).mtime
