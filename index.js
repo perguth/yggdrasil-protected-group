@@ -144,7 +144,7 @@ class YggdrasilProtectedGroup {
   }
 
   async start () {
-    if (!this.checkVersion) {
+    if (!this.checkVersion()) {
       console.error('Yggdrasil is too old (< 0.4.7)')
       process.exit(1)
     }
