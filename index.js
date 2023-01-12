@@ -1,3 +1,4 @@
+/* global AbortController */
 import b4a from 'b4a'
 import * as child from 'child_process'
 import crypto from 'crypto'
@@ -133,7 +134,7 @@ class YggdrasilProtectedGroup {
       fs.utimesSync(this.path.ypg, date, date)
     }
   }
-  
+
   checkVersion () {
     const version = child.execSync('yggdrasil -version').toString().match(/(\d).(\d).(\d)/)
     if (+version[1] === 0 && (+version[2] < 4 || +version[3] < 7)) {
