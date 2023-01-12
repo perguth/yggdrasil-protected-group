@@ -6,8 +6,8 @@ import HJSON from 'hjson'
 import Hyperswarm from 'hyperswarm'
 import DHT from '@hyperswarm/dht'
 import sodium from 'sodium-universal'
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
 class YggdrasilProtectedGroup {
   constructor () {
