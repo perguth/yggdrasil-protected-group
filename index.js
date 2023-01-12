@@ -11,10 +11,10 @@ import { dirname } from 'path'
 
 class YggdrasilProtectedGroup {
   constructor () {
-    const dirname = dirname(fileURLToPath(import.meta.url))
+    const dir = dirname(fileURLToPath(import.meta.url))
     console.log(
       'Starting `yggdrasil-protected-group` version',
-      child.execSync(`cd ${dirname} && git rev-parse --short HEAD`).toString().replace('\n', '')
+      child.execSync(`cd ${dir} && git rev-parse --short HEAD`).toString().replace('\n', '')
     )
 
     this.sockets = new Set()
