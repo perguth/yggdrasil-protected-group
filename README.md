@@ -77,5 +77,4 @@ Note that:
 
 ## Related
 
-- **[Sync SSH Config](https://github.com/perguth/sync-ssh-config)**\
-  Syncs your SSH config
+- **[Sync SSH Config](https://github.com/perguth/sync-ssh-config)**
