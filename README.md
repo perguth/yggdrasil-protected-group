@@ -74,3 +74,8 @@ Note that:
   `sudo service yggdrasil-protected-group restart`
 -  All other properties are automatically synced
 - Comments in `GroupShared` and `LocalOnly` are synced as well
+
+## Related
+
+- **[Sync SSH Config](https://github.com/perguth/sync-ssh-config)**\
+  Syncs your SSH config
