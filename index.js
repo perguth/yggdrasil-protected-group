@@ -235,10 +235,12 @@ class YggdrasilProtectedGroup {
       const isMember = this.conf.swarm.remotePublicKeys.includes(peerPublicKey)
       const isKnown = !!this.conf.swarm.peers[peerPublicKey]
       if (!isMember || !isKnown) {
+        const randomBuffer = b4a.allocUnsafe(32)
+        sodium.randombytes_buf(randomBuffer)
         const signedMessage = b4a.allocUnsafe(32 + sodium.crypto_sign_BYTES)
         sodium.crypto_sign(
           signedMessage,
-          Buffer.alloc(32).fill(sodium.randombytes_random()),
+          randomBuffer,
           Buffer.from(this.conf.swarm.sharedKeyPair.secretKey, 'hex')
         )
         socket.write(JSON.stringify({ hello: signedMessage }))
