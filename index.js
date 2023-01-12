@@ -358,7 +358,7 @@ class YggdrasilProtectedGroup {
 
 export const ypg = new YggdrasilProtectedGroup()
 
-await ypg.start()
+ypg.start()
 
 function sha256 (inp) {
   return crypto.createHash('sha256').update(inp).digest('hex')
