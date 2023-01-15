@@ -238,7 +238,7 @@ class YggdrasilProtectedGroup {
       if (!isMember || !isKnown) {
         const signedPublicKey = b4a.allocUnsafe(32 + sodium.crypto_sign_BYTES)
         sodium.crypto_sign(
-          signedMessage,
+          signedPublicKey,
           Buffer.from(this.conf.swarm.keyPair.publicKey, 'hex'),
           Buffer.from(this.conf.swarm.sharedKeyPair.secretKey, 'hex')
         )
