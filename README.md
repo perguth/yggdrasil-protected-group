@@ -41,6 +41,8 @@ sudo service yggdrasil-protected-group restart
 
 # Now the group information gets synced and
 # the Yggdrasil IPs get whitelisted.
+# Whitelisted peers should show up here:
+# $ sudo ufw show added
 
 # Enable the firewall
 sudo ufw enable
