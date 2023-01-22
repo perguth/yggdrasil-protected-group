@@ -23,6 +23,7 @@ This script:
 
 # Fix Yggdrasil interface name
 sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
+sudo service yggdrasil restart
 
 # Install UFW
 sudo apt install -y ufw
