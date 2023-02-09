@@ -23,7 +23,7 @@ sudo nano /etc/yggdrasil-protected-group.conf
 sudo service yggdrasil-protected-group restart
 
 # Now the group is syncing.
-# To show already whitelisted IPs:
+# Already whitelisted IPs are shown with
 # $ sudo ufw show added
 
 # Enable the firewall
