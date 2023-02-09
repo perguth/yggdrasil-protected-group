@@ -17,10 +17,10 @@ if which ufw > /dev/null; then
 fi
 
 # Stop service
-sudo service yggdrasil-protected-group stop > /dev/null 2>&1
+sudo service $NAME stop > /dev/null 2>&1
 
 # Reset swarm state
-SWARM=/etc/opt/yggdrasil-protected-group/swarm.json
+SWARM=/etc/opt/$NAME/swarm.json
 if test -f $SWARM; then
   sudo rm $SWARM
 fi
