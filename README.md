@@ -37,8 +37,9 @@ sudo ufw enable
 
 ## Usage
 
-Directly edit the [Hjson](https://hjson.github.io/) file: `/etc/yggdrasil-protected-group.conf`
+Directly edit the [Hjson](https://hjson.github.io/) file. Yggdrasil gets restarted automatically.
 
+`/etc/yggdrasil-protected-group.conf`
 ```
 {
   SharedSecret: ...
@@ -54,14 +55,6 @@ Directly edit the [Hjson](https://hjson.github.io/) file: `/etc/yggdrasil-protec
   }
 }
 ```
-
-Note that:
-
-- The same `SharedSecret` must be used for all group members
-- After changing the `SharedSecret` the service must be restarted:  
-  `sudo service yggdrasil-protected-group restart`
--  All other properties are automatically synced
-- Comments in `GroupShared` and `LocalOnly` are synced as well
 
 ## Related
 
