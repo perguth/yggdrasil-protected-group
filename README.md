@@ -23,7 +23,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 
 # Set/copy the `SharedSecret` of the group
 sudo nano /etc/yggdrasil-protected-group.conf
-# and restart the service
+# and restart the service if changed
 sudo service yggdrasil-protected-group restart
 
 # Now the group information gets synced and
