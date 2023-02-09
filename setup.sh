@@ -28,7 +28,7 @@ sudo apt install -y ufw
 # Change from whilelist mode to blacklist mode
 sudo ufw default allow
 # Generally block incoming requests via Yggdrasil
-sudo ufw deny in on ygg0
+sudo ufw deny in on ygg0 proto ipv6
 
 # Reset swarm state
 SWARM=/etc/opt/$NAME/swarm.json
