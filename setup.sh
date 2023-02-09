@@ -10,7 +10,7 @@ fi
 
 if ! sudo ufw status verbose | grep -q 'Status: inactive'; then
   echo UFW already enabled and configured! Please reset it first:
-  echo \$ sudo ufw reset
+  echo $ sudo ufw reset
   exit 1
 fi
 
