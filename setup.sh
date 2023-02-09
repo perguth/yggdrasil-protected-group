@@ -16,6 +16,11 @@ if which ufw > /dev/null; then
   fi
 fi
 
+CONF=/etc/yggdrasil-protected-group.conf
+if test -f $CONF; then
+  sudo touch -d "$(date -R -d '1970-01-01 00:00:00 GMT')" $CONF
+fi
+
 # Fix Yggdrasil interface name
 sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
 sudo service yggdrasil restart
