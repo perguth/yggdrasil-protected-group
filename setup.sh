@@ -9,7 +9,7 @@ if ! which node > /dev/null; then
 fi
 
 if which ufw > /dev/null; then
-  if ! sudo ufw status verbose | grep -q 'Status: inactive'; then
+  if ! sudo ufw status | grep -q 'Status: inactive'; then
     echo UFW already enabled and configured! Please reset it first:
     echo $ sudo ufw reset
     exit 1
