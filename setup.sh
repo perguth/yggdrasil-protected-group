@@ -19,11 +19,10 @@ fi
 # Stop service
 sudo service yggdrasil-protected-group stop > /dev/null 2>&1
 
-# Deprecate existing config
-CONF=/etc/yggdrasil-protected-group.conf
-if test -f $CONF; then
-  echo Deprecating config.
-  sudo touch -d "$(date -R -d '1970-01-01 00:00:00 GMT')" $CONF
+# Reset swarm state
+SWARM=/etc/opt/yggdrasil-protected-group/swarm.json
+if test -f $SWARM; then
+  sudo rm $SWARM
 fi
 
 # Fix Yggdrasil interface name
