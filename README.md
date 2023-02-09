@@ -15,7 +15,7 @@ This script:
 
 ```bash
 # Install the systemd service
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/main/setup.sh)"
 
 # Set/copy the `SharedSecret` of the group
 sudo nano /etc/yggdrasil-protected-group.conf
