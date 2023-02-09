@@ -37,10 +37,9 @@ sudo ufw enable
 
 ## Usage
 
-Directly edit the [Hjson](https://hjson.github.io/) file:
+Directly edit the [Hjson](https://hjson.github.io/) file: `/etc/yggdrasil-protected-group.conf`
 
 ```
-$ /etc/yggdrasil-protected-group.conf
 {
   SharedSecret: ...
   Peers:
