@@ -16,6 +16,10 @@ if which ufw > /dev/null; then
   fi
 fi
 
+# Stop service
+sudo service yggdrasil-protected-group stop > /dev/null 2>&1
+
+# Deprecate existing config
 CONF=/etc/yggdrasil-protected-group.conf
 if test -f $CONF; then
   echo Deprecating config.
