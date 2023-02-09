@@ -18,20 +18,6 @@ This script:
 ## Install
 
 ```bash
-# Install NodeJS
-# https://nodejs.org/en/download/package-manager/
-
-# Fix Yggdrasil interface name
-sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
-sudo service yggdrasil restart
-
-# Install UFW
-sudo apt install -y ufw
-# Change from whilelist mode to blacklist mode
-sudo ufw default allow
-# Generally block incoming requests via Yggdrasil
-sudo ufw deny in on ygg0
-
 # Install the systemd service
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protected-group/master/setup.sh)"
 
