@@ -22,7 +22,6 @@ sudo nano /etc/yggdrasil-protected-group.conf
 # and restart the service if changed
 sudo service yggdrasil-protected-group restart
 
-# Now the group is syncing.
 # Already whitelisted IPs are shown with
 sudo ufw show added
 
