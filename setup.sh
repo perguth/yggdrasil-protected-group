@@ -9,10 +9,9 @@ if ! which node > /dev/null; then
 fi
 
 if ! sudo ufw status verbose | grep -q 'Status: inactive'; then
-    echo UFW already enabled and configured! Please reset it first:
-    echo \$ sudo ufw reset
-    exit 1
-  fi
+  echo UFW already enabled and configured! Please reset it first:
+  echo \$ sudo ufw reset
+  exit 1
 fi
 
 # Fix Yggdrasil interface name
