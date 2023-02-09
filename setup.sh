@@ -18,6 +18,7 @@ fi
 
 CONF=/etc/yggdrasil-protected-group.conf
 if test -f $CONF; then
+  echo Deprecating config.
   sudo touch -d "$(date -R -d '1970-01-01 00:00:00 GMT')" $CONF
 fi
 
