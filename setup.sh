@@ -48,3 +48,9 @@ sudo cp $NAME.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable $NAME
 sudo systemctl restart $NAME
+
+echo Verify that your essential Yggdrasil peers are whitelisted:
+echo $ sudo ufw show added
+
+echo Then activate UFW:
+echo $ sudo ufw enable
