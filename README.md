@@ -41,12 +41,18 @@ Directly edit the [Hjson](https://hjson.github.io/) file:
   SharedSecret: ...
   Peers:
   {
-    GroupShared: []
+    GroupShared: [
+      # Some comment
+      tls://somehost:443
+    ]
     LocalOnly: []
   }
   AllowedPublicKeys:
   {
-    GroupShared: []
+    GroupShared: [
+      # Another comment
+      A-public-key-EIANruysiaUISaiu...
+    ]
     LocalOnly: []
   }
 }
