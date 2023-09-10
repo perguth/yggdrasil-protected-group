@@ -23,8 +23,8 @@ sudo service yggdrasil restart
 # Stop service
 sudo service $NAME stop > /dev/null 2>&1
 
-# Install UFW
-sudo apt install -y ufw
+# Install UFW & build-essential for NPM package installation
+sudo apt install -y ufw build-essential
 # Change from whilelist mode to blacklist mode
 sudo ufw default allow
 # Generally block incoming requests via Yggdrasil
