@@ -23,8 +23,8 @@ class YggdrasilProtectedGroup {
     this.yggSelf = null
     this.abortController = null
     this.path = {
-      ygg: '/etc/yggdrasil.conf',
-      ypg: '/etc/yggdrasil-protected-group.conf',
+      ygg: '/etc/yggdrasil/yggdrasil.conf',
+      ypg: '/etc/yggdrasil/yggdrasil-protected-group.conf',
       swarm: '/etc/opt/yggdrasil-protected-group/swarm.json'
     }
     this.conf = {
