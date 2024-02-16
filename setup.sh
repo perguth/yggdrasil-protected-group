@@ -16,10 +16,6 @@ if sudo which ufw > /dev/null; then
   fi
 fi
 
-# Fix Yggdrasil interface name
-sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil/yggdrasil.conf
-sudo service yggdrasil restart
-
 # Stop service
 sudo service $NAME stop > /dev/null 2>&1
 
@@ -28,7 +24,7 @@ sudo apt install -y ufw build-essential
 # Change from whilelist mode to blacklist mode
 sudo ufw default allow
 # Generally block incoming requests via Yggdrasil
-sudo ufw deny in on ygg0 proto ipv6
+sudo ufw deny in on tun0 proto ipv6
 
 # Reset swarm state
 SWARM=/etc/opt/$NAME/swarm.json
