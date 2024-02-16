@@ -17,7 +17,7 @@ if sudo which ufw > /dev/null; then
 fi
 
 # Fix Yggdrasil interface name
-sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil.conf
+sudo sed -i 's/IfName: auto/IfName: ygg0/g' /etc/yggdrasil/yggdrasil.conf
 sudo service yggdrasil restart
 
 # Stop service
