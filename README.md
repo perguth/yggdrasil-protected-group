@@ -27,9 +27,8 @@ sudo service yggdrasil-protected-group restart
 
 # Add your allowed Yggdrasil peers to:
 sudo nano /etc/yggdrasil-protected-group.conf
-
 # Changes will be synced to all nodes.
-# Peers will be whitelisted and Yggdrasil restarted.
+# Peers will be whitelisted and Yggdrasil restarted automatically.
 
 # Already whitelisted IPs are shown with
 sudo ufw show added
