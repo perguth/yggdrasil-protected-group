@@ -8,6 +8,12 @@ if ! which node > /dev/null; then
   exit 1
 fi
 
+if ! which yggdrasil > /dev/null; then
+  echo Install Yggdrasil Network first:
+  echo https://yggdrasil-network.github.io/installation.html
+  exit 1
+fi
+
 if sudo which ufw > /dev/null; then
   if ! sudo ufw status | grep -q 'Status: inactive'; then
     echo UFW already enabled! Please reset it first:
