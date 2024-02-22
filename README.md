@@ -23,8 +23,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/perguth/yggdrasil-protec
 sudo nano /etc/yggdrasil/yggdrasil-protected-group.conf
 # and restart the service if changed
 sudo service yggdrasil-protected-group restart
-
-# Repeat that on all nodes.
+# Repeat the previous steps on all nodes.
 
 # Add your allowed Yggdrasil peers to:
 sudo nano /etc/yggdrasil-protected-group.conf
