@@ -63,7 +63,3 @@ Directly edit the [Hjson](https://hjson.github.io/) ("JSON with comments") file:
   }
 }
 ```
-
-## Related
-
-- **[Sync SSH Config](https://github.com/perguth/sync-ssh-config)**
